@@ -8,6 +8,11 @@
 # testing
 /coverage
 
+# Some vscode extentions 
+.lh
+.vscode
+.history
+
 # production
 /build
 
