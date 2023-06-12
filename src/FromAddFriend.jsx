@@ -18,6 +18,8 @@ const FromAddFriend = ({onAddFriend}) => {
     }
 
     onAddFriend(friend);
+    setName('')
+    setImage('https://i.pravatar.cc/48')
   }
 
   return (

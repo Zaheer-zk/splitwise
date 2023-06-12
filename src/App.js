@@ -9,23 +9,29 @@ import { useState } from 'react'
 const App = () => {
   const [showAddFriend, setShowAddFriend] = useState(false)
   const [friends, setFriends] = useState(initialFriends)
+  const [selectedFriend, setSelectedFriend] = useState(null)
 
   const addNewFriend = (friend) => {
     setFriends((friends) => [...friends, friend])
     setShowAddFriend(false)
   }
 
+  const handleSelection = (friend) => {
+    setSelectedFriend(friend)
+  }
+
   return (
     <div className='app'>
       <div className='sidebar'>
-        <FriendsList friends={friends}/>
+        <FriendsList friends={friends} onSelection={handleSelection} selectedFriend={selectedFriend}/>
+
         {showAddFriend && <FromAddFriend onAddFriend={addNewFriend}/>}
         {
           <Button onClick={() => setShowAddFriend(!showAddFriend)}>{showAddFriend ? 'Close' : 'Add friend'}</Button>
         }
       </div>
-
-      <FromSplitBill/>
+        
+      {selectedFriend ? <FromSplitBill selectedFriend={selectedFriend}/> : ''}
     </div>
   )
 }
