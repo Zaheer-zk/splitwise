@@ -31,7 +31,7 @@ const App = () => {
         }
       </div>
         
-      {selectedFriend ? <FromSplitBill selectedFriend={selectedFriend}/> : ''}
+      {selectedFriend ? <FromSplitBill selectedFriend={selectedFriend} /> : ''}
     </div>
   )
 }
