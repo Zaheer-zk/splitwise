@@ -17,7 +17,21 @@ const App = () => {
   }
 
   const handleSelection = (friend) => {
-    setSelectedFriend(friend)
+    // setSelectedFriend(friend)
+    setSelectedFriend((cur) => cur?.id === friend.id ? null : friend)
+    setShowAddFriend(false)
+  }
+
+  const onSplitValue  = (value) => {
+    // console.log(value);
+    // Modify the friend value ----
+    setFriends(
+      friends.map((friend) => (
+        friend.id === selectedFriend.id ? {...friend, balance: friend.balance + value} : friend
+      ))
+    ) 
+
+    setSelectedFriend(null)
   }
 
   return (
@@ -31,7 +45,7 @@ const App = () => {
         }
       </div>
         
-      {selectedFriend ? <FromSplitBill selectedFriend={selectedFriend} /> : ''}
+      {selectedFriend ? <FromSplitBill selectedFriend={selectedFriend} onSplitValue={onSplitValue}/> : ''}
     </div>
   )
 }
